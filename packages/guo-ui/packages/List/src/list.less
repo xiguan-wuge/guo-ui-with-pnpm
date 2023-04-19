@@ -1,0 +1,29 @@
+// @import '../style/var';
+
+.g-list {
+  // position: relative;
+  // background-color: pink;
+  &__container {
+    position: relative;
+    height: 100%;
+    transition-property: transform;
+    background-color: lightblue;
+  }
+  &__loading,
+  &__finished-text,
+  &__error-text {
+    // color: @list-text-color;
+    // font-size: @list-text-font-size;
+    // line-height: @list-text-line-height;
+    // text-align: center;
+    color: #969799;
+    font-size: 14px;
+    line-height: 50px;
+    text-align: center;
+  }
+
+  &__placeholder {
+    height: 0;
+    pointer-events: none;
+  }
+}

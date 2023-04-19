@@ -1,0 +1,66 @@
+// @import '../../../style/var.less';
+@import '../../../style/css-var.less';
+:root {
+  --g-button-default-height: 44px;
+  --van-button-default-font-size: var(--g-font-size-lg);
+  --g-button-default-line-height: 1.2;
+  --g-button-radius: var(--g-radius-md);
+  --g-button-color: #303133;
+  --g-button-border-color: '#000';
+}
+/* 深色模式 */
+html[data-theme="dark"]:root {
+  --g-button-color: pink;
+  --g-button-border-color: 'red';
+}
+
+.g-button {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  // height: @button-default-height;
+  height: var(--g-button-default-height);
+  margin: 0;
+  padding: 4px 10px;
+  text-align: center;
+  // border-radius: @button-border-radius;
+  border-radius: var(--g-button-radius);
+  // font-size: @button-default-font-size;
+  font-size: var(--g-button-default-font-size);
+  // line-height: @button-default-line-height;
+  line-height: var(--g-button-default-line-height);
+  // color: #303133;
+  color: var(--g-button-color);
+  cursor: pointer;
+  // transition: opacity @animation-duration-fast;
+  transition: opacity var(--g-duration-fast);
+  -webkit-appearance: none;
+  // border-color: var(--g-button-border-color);
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--g-button-border-color);
+    border: inherit;
+    border-color: var(--g-button-border-color);
+    border-radius: inherit;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    content: ' '
+  }
+  &:active::before {
+    opacity: 0.1;
+  }
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    &::before {
+      content: ' ';
+    }
+  }
+}

@@ -1,0 +1,31 @@
+/* 路由页面进入动画 */
+.slidein-enter {
+  transform: translate3d(100%, 0, 0);
+  opacity: 0;
+}
+.slidein-leave-to {
+  transform: translate3d(-100%, 0, 0);
+}
+
+
+.slidein-leave-avtive {
+  transition: all 1.5s;
+}
+.slidein-enter-active {
+  transition: all .4s;
+}
+
+/* 页面返回动画 */
+.slideout-enter {
+  transform: translate3d(-100%, 0, 0);
+  opacity: 0;
+}
+.slideout-leave-to {
+  transform: translate3d(100%, 0, 0);
+  opacity: 0;
+}
+
+.slideout-enter-active,.slideout-leave-active {
+  transition: all .4s;
+}
+

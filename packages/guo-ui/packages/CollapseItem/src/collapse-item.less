@@ -1,0 +1,80 @@
+@import '../../../style/css-var.less';
+.g-collapse-item {
+  position: relative;
+  &--border {
+    &::after {
+      border-width: 1px 0;
+    }
+  }
+  &__header {
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    // cursor: pointer;
+    color: #303133;
+    &:active {
+      background-color: #f2f3f5
+    }
+
+    // background-color: blue;
+    &_title {
+      flex: 1;
+      text-align: left;
+      font-size: 14px;
+    }
+    &_icon {
+      width: 40px;
+      height: 40px;
+      flex: 0 1 40px;
+      transform: rotate(180deg) translateZ(0);
+      transition: transform 0.3s;
+
+    }
+    &_icon-up {
+      transform: rotate(90deg) translateZ(0);
+      transition: transform 0.3s;
+    }
+    &--disabled {
+      color: #c8c9cc;
+      cursor: not-allowed;
+      &:active {
+        background-color: #fff;
+      }
+    }
+  }
+
+  &__title {
+    &-icon {
+      transform: rotate(90deg) translateZ(0);
+      transition: transform 0.3s;
+    }
+
+    &::after {
+      right: 16px;
+      display: none;
+    }
+
+    &--expand {
+      .g-right-icon::after {
+        transform: rotate(-90deg)
+      }
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    transition:  height 0.3s ease-in-out;
+    will-change: heigth;
+  }
+
+  &__content {
+    padding: 16px;
+    color: gray;
+    font-size: 14px;
+    line-height: 28px;
+    background-color: pink;
+  }
+}
