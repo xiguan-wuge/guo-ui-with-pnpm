@@ -7,6 +7,8 @@ const smp = new SpeedMeasurePlugin();
 const TerserPlugin = require('terser-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const AddDefaultCssPlugin = require('../plugins/addDefaultCssPlugin/index.js')
+
 
 const join = path.join;
 //  获取基于当前路径的目标文件
@@ -14,7 +16,6 @@ const resolve = (dir) => path.join(__dirname, "../", dir);
 
 function getComponentEntries(path) {
   let files = fs.readdirSync(resolve(path));
-
   const componentEntries = files.reduce((fileObj, item) => {
     //  文件路径
     const itemPath = join(path, item);
@@ -46,6 +47,19 @@ function getMultiEntry(entryArr) {
   }
   return result
 }
+const entries = getComponentEntries("packages")
+
+function getComponentList(obj) {
+  let res = []
+  Object.keys(obj).forEach(entry => {
+    res.push(entry)
+  })
+  return res
+}
+const componentList = getComponentList(entries) || []
+
+// console.log('componentList', componentList);
+
 const buildConfig = {
   //  输出文件目录
   outputDir: resolve("lib"),
@@ -53,8 +67,7 @@ const buildConfig = {
   //  webpack配置
   configureWebpack: smp.wrap({
     //  入口文件
-    entry: getComponentEntries("packages"),
-    // entry: getMultiEntry(["packages", "utils"]),
+    entry: entries,
     //  输出配置
     output: {
       //  文件名称
@@ -64,8 +77,6 @@ const buildConfig = {
       //  库中被导出的项
       libraryExport: "default",
       //  引用时的依赖名
-      // library: 'laoyan-ui'
-      // library: "guo-ui",
       library: "guoUI",
     },
     resolve: {
@@ -87,6 +98,9 @@ const buildConfig = {
       // 进度条
       new ProgressBarPlugin({
         format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`
+      }),
+      new AddDefaultCssPlugin({
+        components: componentList
       })
 
     ],
@@ -128,6 +142,7 @@ const buildConfig = {
         }),
       ]
     },
+    // devtool: 'source-map'
     // splitChunks: {
     //   // include all types of chunks
     //   chunks: 'all',
@@ -146,9 +161,9 @@ const buildConfig = {
   css: {
     sourceMap: false,
     extract: {
-      // filename: "[name]/style/index.css",
+      filename: "[name]/style/index.css",
       // filename: "[name]/style.css",
-      filename: "[name]/index.css",
+      // filename: "[name]/index.css",
     },
   },
   chainWebpack: (config) => {
