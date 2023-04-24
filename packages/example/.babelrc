@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "@vue/cli-plugin-babel/preset"
+  ],
+  "plugins": [
+    [
+      "import", 
+      {
+        "libraryName": "guo-ui",
+        "libraryDirectory": "lib",
+        "style": true
+      }, 
+      "guo-ui"
+    ]
+  ]
+}

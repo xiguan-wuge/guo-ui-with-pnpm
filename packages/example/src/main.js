@@ -17,6 +17,7 @@ import router from './router'
 // // const guoUI = require('guo-ui').default
 // console.log('guoUI', guoUI);
 // Vue.use(guoUI)
+// const uiPath = '../../guo-uis/packages/index'
 
 // 按需引入
 import {
@@ -24,21 +25,30 @@ import {
   List,
   Tag,
   Lazyload,
-  MRouter
-  // install
+  MRouter,
+  Slider,
+  ConfigProvider
+//   install
 // } from 'guo-ui'
-} from '../../guo-ui/packages/index'
+// } from '../../guo-ui/packages/index'
+} from 'ui-path'
 
+import { Skeleton, Area } from 'vant';
 
-// console.log('install', install);
-// import {gFn} from 'guo-ui/Utils'
-
+// guo-ui
 Vue.use(Button)
 Vue.use(List)
 Vue.use(Tag)
 Vue.use(Lazyload)
+Vue.use(Slider)
+Vue.use(ConfigProvider)
+
+// import MRouter from 'ui-path'
 Vue.use(MRouter, router)
 
+// vant-ui
+Vue.use(Skeleton);
+Vue.use(Area);
 
 
 Vue.config.productionTip = false

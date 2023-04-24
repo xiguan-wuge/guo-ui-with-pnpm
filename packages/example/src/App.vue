@@ -2,9 +2,9 @@
   <div id="app">
     <!-- <router-view></router-view> -->
     <!-- <wconsole></wconsole> -->
-    <m-router>
+    <!-- <m-router> -->
       <router-view></router-view>
-    </m-router>
+    <!-- </m-router> -->
   </div>
 </template>
 

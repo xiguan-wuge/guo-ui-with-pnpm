@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 const HelloWorld = () => import('@/components/HelloWorld.vue')
-const List = () => import('@/views/list.vue')
+// const List = () => import('@/views/list.vue')
 
 const routes = [
   {
@@ -13,14 +13,14 @@ const routes = [
       keppAlive: true
     }
   },
-  {
-    path: '/list',
-    name: 'List',
-    component: List,
-    meta: {
-      keppAlive: true
-    }
-  },
+  // {
+  //   path: '/list',
+  //   name: 'List',
+  //   component: () => import('@/views/list.vue'),
+  //   meta: {
+  //     keppAlive: true
+  //   }
+  // },
   {
     path: '/mRouterPage1',
     name: 'mRouterPage1',

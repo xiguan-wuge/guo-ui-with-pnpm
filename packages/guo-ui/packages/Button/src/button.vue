@@ -3,7 +3,7 @@
     <div class="g-button__content">
       <span v-if="value" class="g-button__text">{{value}}</span>
       <slot></slot>
-      <g-tag></g-tag>
+      <!-- <g-tag></g-tag> -->
     </div>
   </button>
 </template>
@@ -11,11 +11,11 @@
 import {createNameSpace} from '../../../utils/index.js'
 const [name] = createNameSpace('button')
 
-import gTag from '../../Tag'
+// import gTag from '../../Tag'
 export default {
   name,
   components: {
-    gTag
+    // gTag
   },
   props: {
     value: String

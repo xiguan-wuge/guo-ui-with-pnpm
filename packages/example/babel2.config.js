@@ -22,5 +22,24 @@ module.exports = {
     //     camel2UnderlineComponentName: false // 是否需要驼峰转下划线
     //   }
     // ]
+    // [
+    //   'import', 
+    //   {
+    //     libraryName: 'vant',
+    //     libraryDirectory: 'es',
+    //     style: true
+    //   }, 
+    //   'vant'
+    // ],
+    [
+      'import', 
+      {
+        libraryName: 'guo-ui',
+        libraryDirectory: 'lib',
+        // style: true
+        style: 'style/index.css'
+      }, 
+      'guo-ui'
+    ],
   ]
 }
